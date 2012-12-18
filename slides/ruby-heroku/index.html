@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Ruby + Heroku</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=1274, user-scalable=no">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/print.css" media="print">
+	<!--
+		To apply styles to the certain slides
+		set slide ID to get needed elements
+		-->
+	<style>
+		#Cover h2 {
+			margin:65px 0 0;
+			color:#FFF;
+			text-align:center;
+			font-size:70px;
+			}
+		#Cover h2 span {
+			text-indent:-98px;
+			display:block;
+			font-size:40px;
+		}
+		#Cover p {
+			color:#FFF;
+		}
+	</style>
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Ruby + Heroku</h1>
+		<p>Keith Johnson</p>
+	</header>
+
+	<section class="slide"><div>
+		<h2>Ruby + Heroku</h2>
+		<br><br><br><br><br><br>
+		<small>Keith Johnson, CHF Speaker Series, TrepHub, December 18th 2012</small>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>A little about me</h2>
+		<ul>
+			<li>System Administrator</li>
+			<li>Florida Tech Alumni</li>
+			<li>This is my first time using:
+				<ul><li>Heroku</li>
+					<li>Ruby</li>
+					<li>Rails</li>
+				</ul>
+			</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Ruby on Rails</h2>
+		<img src="pictures/ruby.png" style="vertical-align:middle" alt="">
+		<span style="font-size:72px;font-weight:bold">+</span>
+		<img src="pictures/rails.png" style="vertical-align:middle" alt="">
+	</div></section>
+
+	<section class="slide"><div>
+		<img src="pictures/heroku.png" alt="">
+		<p>Languages Supported:<br>Ruby, node.js, clojure, python, java, gradle, scala, grails, play</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Our goal for the talk:</h2>
+		<ul>
+			<li>A simple link database</li>
+			<li><a href="http://glacial-ravine-6515.herokuapp.com/">glacial-ravine-6515.herokuapp.com/</a></li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Overview</h2>
+		<ul>
+			<li>Create a simple rails app</li>
+			<li>Test it locally</li>
+			<li>Push it to Heroku</li>
+			<li>Make it better</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Your First Rails App</h2>
+		<pre><code>rails new links
+rails generate controller main index
+rails generate scaffold Link
+	name:string url:string clicks:integer
+</code></pre>
+		<p class="note">The last command should be all on one line</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>A few tweaks first</h2>
+		<ul>
+			<li>Edit our Gemfile(sqlite3 vs PostgreSQL)</li>
+			<li>Edit our routes.rb(remove public/index.html)</li>
+			<li>Edit the db migration(<code>:null=>false, :default=>0</code>)</li>
+			<li>Migrate the database</li>
+			<li>Make it better</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Push to Heroku</h2>
+		<pre><code>heroku login
+git init .
+heroku create
+git push heroku master
+heroku run rake db:migrate
+</code></pre>
+		<p class="note">Edit the Gemfile to use PostgreSQL first</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>More tweaks</h2>
+		<ul>
+			<li>Add validation</li>
+			<li>Make the index page show the list of links</li>
+			<li>Add a new action for links('go')</li>
+			<li>Make it better</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Questions?</h2>
+		<ul>
+			<li>Source: <a href="http://github.com/ubergeek42/chf-heroku-rails">http://github.com/ubergeek42/chf-heroku-rails</a>
+			<li>Demo: <a href="http://glacial-ravine-6515.herokuapp.com/">glacial-ravine-6515.herokuapp.com/</a></li>
+			<li>Slides: <a href="http://ubergeek42.github.com/slides/">http://ubergeek42.com/slides/</a></li>
+		</ul>
+	</div></section>
+
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.js"></script>
+	<!-- Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->
+	<!-- Photos by John Carey — fiftyfootshadows.net -->
+</body>
+</html>
