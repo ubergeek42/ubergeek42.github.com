@@ -116,7 +116,29 @@ heroku run rake db:migrate
 	</div></section>
 
 	<section class="slide"><div>
-		<h2>More tweaks</h2>
+		<h2>Switch to a real webserver</h2>
+		<ul>
+			<li>Add 'thin' gem</li>
+			<li>Procfile: <code>web: bundle exec rails server thin -p $PORT -e $RAILS_ENV</code></li>
+			<li>Environment(.env): <code>RAILS_ENV='development'</code></li>
+			<li>foreman start</li>
+			<li>Make it better</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>A few heroku tools</h2>
+		<ul>
+			<li>heroku ps</li>
+			<li>heroku logs</li>
+			<li>heroku releases (heroku rollback)</li>
+			<li>heroku ps:scale web=10</li>
+			<li>heroku run &lt;command&gt;</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Rails tweaks</h2>
 		<ul>
 			<li>Add validation</li>
 			<li>Make the index page show the list of links</li>
